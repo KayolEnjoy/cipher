@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enkripsi Kriptografi | Demo Tools! | $100</title>
+    <title>Encriptor/Decriptor Text | Demo Tools! | $100</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
@@ -49,7 +49,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Caesar Cipher</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Caesar Cipher</h5>
+                            <button id="infoCaesar" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="caesarInput" class="form-label">Teks Asli</label>
                             <textarea id="caesarInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -73,7 +76,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Atbash Cipher</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Atbash Cipher</h5>
+                            <button id="infoAtbash" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="atbashInput" class="form-label">Teks Asli</label>
                             <textarea id="atbashInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -94,7 +100,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Rail Fence Cipher</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Rail Fence Cipher</h5>
+                            <button id="infoRail" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="railFenceInput" class="form-label">Teks Asli</label>
                             <textarea id="railFenceInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -113,7 +122,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Vigenère Cipher</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Vigenère Cipher</h5>
+                            <button id="infoVigenere" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="vigenereInput" class="form-label">Teks Asli</label>
                             <textarea id="vigenereInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -138,7 +150,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Affine Cipher</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Affine Cipher</h5>
+                            <button id="infoAffine" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="affineInput" class="form-label">Teks Asli</label>
                             <textarea id="affineInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -165,7 +180,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Playfair Cipher</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">playfair Cipher</h5>
+                            <button id="infoPlayfair" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="playfairInput" class="form-label">Teks Asli</label>
                             <textarea id="playfairInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -192,7 +210,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Hill Cipher</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Hill Cipher</h5>
+                            <button id="infoHill" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="hillInput" class="form-label">Teks Asli</label>
                             <textarea id="hillInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -217,7 +238,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">AES Cipher</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">AES Cipher</h5>
+                            <button id="infoAes" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="aesInput" class="form-label">Teks Asli</label>
                             <textarea id="aesInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -244,7 +268,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">RSA Cipher</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">RSA Cipher</h5>
+                            <button id="infoRsa" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="rsaInput" class="form-label">Teks Asli</label>
                             <textarea id="rsaInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -272,7 +299,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Caesar Rail Base64</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Caesar Rail Base64</h5>
+                            <button id="infoCaraba" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="customInput" class="form-label">Teks Asli</label>
                             <textarea id="customInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -294,7 +324,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Caesar Vign Base64</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Caesar Vign Base64</h5>
+                            <button id="infoCaviba" class="btn btn-info" title="Info"><i class="fa-solid fa-circle-info"></i></button>
+                        </div>
                         <div class="mb-3">
                             <label for="caevigInput" class="form-label">Teks Asli</label>
                             <textarea id="caevigInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
@@ -327,6 +360,222 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        let docTitle = document.title;
+        window.addEventListener("blur", () =>{
+        document.title = "Encriptor/Decriptor Text | Kalkulator Kriptografi | Buatan Anak bangsa";
+        })
+        window.addEventListener("focus", () =>{
+        document.title = docTitle;
+        })
+    </script>
+    <script>
+        document.getElementById('infoCaesar').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan Caesar Cipher',
+                html: `<p>Caesar Cipher adalah metode enkripsi yang menggeser setiap huruf dalam teks asli dengan sejumlah posisi tertentu dalam alfabet.</p>
+                       <p>Rumus Caesar Cipher:</p>
+                       <p><strong>C = (P + k) mod 26</strong></p>
+                       <p>Keterangan:</p>
+                       <ul>
+                           <li><strong>C</strong> = huruf hasil enkripsi</li>
+                           <li><strong>P</strong> = huruf asli</li>
+                           <li><strong>k</strong> = jumlah pergeseran (shift)</li>
+                           <li><strong>mod 26</strong> = operasi modulo 26, karena ada 26 huruf dalam alfabet Inggris</li>
+                       </ul>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+        document.getElementById('infoAtbash').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan Atbash Cipher',
+                html: `<p>Atbash Cipher adalah metode enkripsi yang menggantikan setiap huruf dalam teks asli dengan huruf yang berlawanan di alfabet.</p>
+                    <p>Rumus Atbash Cipher:</p>
+                    <p><strong>C = 25 - P</strong></p>
+                    <p>Keterangan:</p>
+                    <ul>
+                        <li><strong>C</strong> = huruf hasil enkripsi</li>
+                        <li><strong>P</strong> = huruf asli</li>
+                        <li><strong>25</strong> = angka yang mewakili posisi terakhir dalam alfabet jika dihitung dari nol (0-25)</li>
+                    </ul>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+        document.getElementById('infoRail').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan Rail Fence Cipher',
+                html: `<p>Rail Fence Cipher adalah metode enkripsi yang mengatur teks asli menjadi pola zigzag pada sejumlah rel tertentu, kemudian membaca kembali teks berdasarkan urutan rel tersebut.</p>
+                    <p>Rumus Rail Fence Cipher:</p>
+                    <p><strong>Tulis teks dalam pola zigzag, kemudian bacalah berdasarkan urutan rel.</strong></p>
+                    <p>Keterangan:</p>
+                    <ul>
+                        <li><strong>Jumlah rel</strong> = jumlah baris zigzag yang digunakan</li>
+                        <li><strong>Polanya</strong> = tergantung pada jumlah rel, biasanya bergerak naik-turun dalam bentuk zigzag</li>
+                        <li><strong>Hasil enkripsi</strong> = teks yang dihasilkan dari pembacaan urutan per rel</li>
+                    </ul>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+        document.getElementById('infoVigenere').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan Vigenère Cipher',
+                html: `<p>Vigenère Cipher adalah metode enkripsi yang menggunakan kata kunci untuk menentukan jumlah pergeseran setiap huruf dalam teks asli. Setiap huruf dalam teks digeser dengan nilai yang ditentukan oleh huruf yang sesuai dalam kata kunci.</p>
+                    <p>Rumus Vigenère Cipher:</p>
+                    <p><strong>C = (P + K) mod 26</strong></p>
+                    <p>Keterangan:</p>
+                    <ul>
+                        <li><strong>C</strong> = huruf hasil enkripsi</li>
+                        <li><strong>P</strong> = huruf asli</li>
+                        <li><strong>K</strong> = huruf dari kata kunci yang sesuai dengan huruf asli</li>
+                        <li><strong>mod 26</strong> = operasi modulo 26, karena ada 26 huruf dalam alfabet Inggris</li>
+                    </ul>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+        document.getElementById('infoAffine').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan Affine Cipher',
+                html: `<p>Affine Cipher adalah metode enkripsi yang mengkombinasikan operasi pergeseran (shift) dan perkalian pada setiap huruf dalam teks asli.</p>
+                    <p>Rumus Affine Cipher:</p>
+                    <p><strong>C = (aP + b) mod 26</strong></p>
+                    <p>Keterangan:</p>
+                    <ul>
+                        <li><strong>C</strong> = huruf hasil enkripsi</li>
+                        <li><strong>P</strong> = huruf asli (dalam bentuk numerik, A=0, B=1, ..., Z=25)</li>
+                        <li><strong>a</strong> = faktor perkalian (harus relatif prima terhadap 26)</li>
+                        <li><strong>b</strong> = nilai pergeseran (shift)</li>
+                        <li><strong>mod 26</strong> = operasi modulo 26, karena ada 26 huruf dalam alfabet Inggris</li>
+                    </ul>
+                    <p>Langkah-langkah:</p>
+                    <ol>
+                        <li>Konversikan setiap huruf menjadi angka (A=0, B=1, ..., Z=25).</li>
+                        <li>Gunakan rumus <strong>C = (aP + b) mod 26</strong> untuk mengenkripsi setiap huruf.</li>
+                        <li>Konversikan angka hasil enkripsi kembali menjadi huruf.</li>
+                    </ol>
+                    <p><strong>Contoh Visual:</strong></p>
+                    <p>Misalkan <strong>a = 5</strong> dan <strong>b = 8</strong>:</p>
+                    <p><code>A (0) -> (5*0 + 8) mod 26 = 8 -> I</code></p>
+                    <p><code>B (1) -> (5*1 + 8) mod 26 = 13 -> N</code></p>
+                    <p><code>C (2) -> (5*2 + 8) mod 26 = 18 -> S</code></p>
+                    <p><em>Dan seterusnya...</em></p>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+        document.getElementById('infoPlayfair').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan Playfair Cipher',
+                html: `<p>Playfair Cipher adalah metode enkripsi yang menggunakan sebuah matriks 5x5 untuk mengenkripsi pasangan huruf dalam teks asli.</p>
+                    <p>Rumus Playfair Cipher:</p>
+                    <ol>
+                        <li>Buat matriks 5x5 dengan kata kunci, isi sisa kotak dengan huruf-huruf alfabet yang tersisa (I dan J digabungkan menjadi satu).</li>
+                        <li>Untuk setiap pasangan huruf dalam teks:
+                            <ul>
+                                <li>Jika kedua huruf berada di baris yang sama, geser ke kanan.</li>
+                                <li>Jika kedua huruf berada di kolom yang sama, geser ke bawah.</li>
+                                <li>Jika keduanya berbeda baris dan kolom, tukar huruf sesuai dengan kotak sudut mereka.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><strong>Contoh:</strong> Dengan kata kunci "MONARCHY", huruf "HI" dapat dienkripsi menjadi "BM" (sesuai dengan aturan di atas).</p>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+        document.getElementById('infoAes').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan AES Cipher',
+                html: `<p>AES (Advanced Encryption Standard) adalah metode enkripsi simetris yang menggunakan kunci enkripsi yang sama untuk mengenkripsi dan mendekripsi data.</p>
+                    <p>Langkah-langkah AES Cipher:</p>
+                    <ol>
+                        <li><strong>SubBytes:</strong> Setiap byte dalam data diganti dengan byte lain menggunakan tabel substitusi.</li>
+                        <li><strong>ShiftRows:</strong> Baris data dipindahkan secara siklik untuk menghasilkan perubahan.</li>
+                        <li><strong>MixColumns:</strong> Kolom data dikombinasikan untuk memberikan difusi tambahan.</li>
+                        <li><strong>AddRoundKey:</strong> Kunci round diterapkan pada blok data dengan operasi XOR.</li>
+                    </ol>
+                    <p>AES biasanya digunakan dengan panjang kunci 128, 192, atau 256 bit.</p>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+        document.getElementById('infoRsa').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan RSA Cipher',
+                html: `<p>RSA (Rivest-Shamir-Adleman) adalah metode enkripsi asimetris yang menggunakan dua kunci, yaitu kunci publik untuk enkripsi dan kunci privat untuk dekripsi.</p>
+                    <p>Rumus RSA Cipher:</p>
+                    <ol>
+                        <li><strong>Kunci Publik:</strong> Terbuat dari pasangan nilai <em>(n, e)</em>, di mana <em>n</em> adalah hasil perkalian dari dua bilangan prima besar, dan <em>e</em> adalah eksponen enkripsi.</li>
+                        <li><strong>Kunci Privat:</strong> Dihitung sebagai invers modulo dari <em>e</em> dengan respect ke <em>(p-1)(q-1)</em>, di mana <em>p</em> dan <em>q</em> adalah bilangan prima yang digunakan untuk menghitung <em>n</em>.</li>
+                        <li><strong>Enkripsi:</strong> Ciphertext <em>C</em> dihitung dengan rumus <em>C = M^e mod n</em>, di mana <em>M</em> adalah plaintext.</li>
+                        <li><strong>Dekripsi:</strong> Plaintext <em>M</em> dihitung dengan rumus <em>M = C^d mod n</em>, di mana <em>d</em> adalah kunci privat.</li>
+                    </ol>
+                    <p>RSA digunakan secara luas dalam komunikasi yang membutuhkan keamanan tinggi.</p>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+        document.getElementById('infoCaraba').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan Enkripsi-Dekripsi Gabungan',
+                html: `<p>Enkripsi gabungan ini menggunakan tiga metode, yaitu Caesar Cipher, Rail Fence Cipher, dan Base64, yang diimplementasikan secara berurutan untuk menghasilkan teks yang lebih aman.</p>
+                    <p><strong>Teknik Enkripsi:</strong></p>
+                    <ol>
+                        <li><strong>Caesar Cipher:</strong> Setiap huruf dalam teks asli digeser dengan jumlah tertentu (misalnya, 3 posisi ke kanan).</li>
+                        <li><strong>Rail Fence Cipher:</strong> Teks yang telah dienkripsi dengan Caesar Cipher diatur dalam pola zigzag dengan jumlah rel tertentu, kemudian dibaca berdasarkan urutan rel.</li>
+                        <li><strong>Base64 Encoding:</strong> Teks hasil dari Rail Fence Cipher kemudian dikodekan menggunakan Base64, yang mengonversi data biner ke dalam format teks yang aman dan mudah disimpan.</li>
+                    </ol>
+                    <p><strong>Teknik Dekripsi:</strong></p>
+                    <ol>
+                        <li><strong>Base64 Decoding:</strong> Pertama, teks dienkode kembali ke format asli dari Base64.</li>
+                        <li><strong>Rail Fence Cipher:</strong> Teks hasil Base64 decoding didekripsi dengan Rail Fence Cipher dengan menggunakan jumlah rel yang sama seperti saat enkripsi.</li>
+                        <li><strong>Caesar Cipher:</strong> Akhirnya, teks yang telah didekripsi dengan Rail Fence Cipher dikembalikan ke bentuk aslinya dengan menggeser huruf-huruf dalam arah yang berlawanan (misalnya, 3 posisi ke kiri).</li>
+                    </ol>
+                    <p><strong>Ilustrasi Visual:</strong></p>
+                    <p>Misalnya, teks asli "HELLO" melalui proses:</p>
+                    <ul>
+                        <li><strong>Caesar Cipher (shift 3):</strong> "HELLO" menjadi "KHOOR"</li>
+                        <li><strong>Rail Fence Cipher (3 rel):</strong> "KHOOR" menjadi "KRHOO"</li>
+                        <li><strong>Base64 Encoding:</strong> "KRHOO" menjadi "S1JIT08="</li>
+                    </ul>
+                    <p>Untuk mendekripsi, langkah-langkah di atas dibalik secara berurutan.</p>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+        document.getElementById('infoCaviba').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Penjelasan Enkripsi-Dekripsi Gabungan',
+                html: `<p>Enkripsi gabungan ini menggunakan tiga metode, yaitu Caesar Cipher, Vigenère Cipher, dan Base64, yang diterapkan secara berurutan untuk menghasilkan teks yang lebih aman dan sulit untuk dipecahkan.</p>
+                    <p><strong>Teknik Enkripsi:</strong></p>
+                    <ol>
+                        <li><strong>Caesar Cipher:</strong> Setiap huruf dalam teks asli digeser dengan jumlah tertentu (misalnya, 3 posisi ke kanan).</li>
+                        <li><strong>Vigenère Cipher:</strong> Teks yang telah dienkripsi dengan Caesar Cipher dienkripsi kembali menggunakan Vigenère Cipher dengan kata kunci tertentu. Kata kunci ini menentukan pergeseran setiap huruf dalam teks.</li>
+                        <li><strong>Base64 Encoding:</strong> Teks hasil dari Vigenère Cipher kemudian dikodekan menggunakan Base64, yang mengonversi data biner ke dalam format teks yang aman dan mudah disimpan.</li>
+                    </ol>
+                    <p><strong>Teknik Dekripsi:</strong></p>
+                    <ol>
+                        <li><strong>Base64 Decoding:</strong> Pertama, teks dienkode kembali ke format asli dari Base64.</li>
+                        <li><strong>Vigenère Cipher:</strong> Teks hasil Base64 decoding didekripsi dengan Vigenère Cipher menggunakan kata kunci yang sama seperti saat enkripsi.</li>
+                        <li><strong>Caesar Cipher:</strong> Akhirnya, teks yang telah didekripsi dengan Vigenère Cipher dikembalikan ke bentuk aslinya dengan menggeser huruf-huruf dalam arah yang berlawanan (misalnya, 3 posisi ke kiri).</li>
+                    </ol>
+                    <p><strong>Ilustrasi Visual:</strong></p>
+                    <p>Misalnya, teks asli "HELLO" melalui proses:</p>
+                    <ul>
+                        <li><strong>Caesar Cipher (shift 3):</strong> "HELLO" menjadi "KHOOR"</li>
+                        <li><strong>Vigenère Cipher (kata kunci "KEY"):</strong> "KHOOR" menjadi "RIJVS"</li>
+                        <li><strong>Base64 Encoding:</strong> "RIJVS" menjadi "UklKVlM="</li>
+                    </ul>
+                    <p>Untuk mendekripsi, langkah-langkah di atas dibalik secara berurutan.</p>`,
+                icon: 'info',
+                confirmButtonText: 'Tutup'
+            });
+        });
+    </script>
     <script>
         // Fungsi untuk Caesar Cipher
         function caesarCipher(str, shift, action) {
