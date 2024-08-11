@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,8 +39,10 @@
 <body>
 
     <div class="container">
-        <h1 class="text-center">Enkripsi Kriptografi Dasar</h1>
+        <h1 class="text-center">Encode Decode Kriptografi</h1>
+        <h5 class="text-center text-muted">*hanya kalkulator yang siap digunakan</h5>
         <br>
+        
         
         <div class="row">
             <!-- Caesar Cipher Card -->
@@ -50,7 +52,7 @@
                         <h5 class="card-title">Caesar Cipher</h5>
                         <div class="mb-3">
                             <label for="caesarInput" class="form-label">Teks Asli</label>
-                            <textarea id="caesarInput" class="form-control" rows="3" placeholder="Masukkan teks untuk dienkripsi"></textarea>
+                            <textarea id="caesarInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="shiftValue" class="form-label">Jumlah Shift</label>
@@ -74,10 +76,10 @@
                         <h5 class="card-title">Atbash Cipher</h5>
                         <div class="mb-3">
                             <label for="atbashInput" class="form-label">Teks Asli</label>
-                            <textarea id="atbashInput" class="form-control" rows="3" placeholder="Masukkan teks untuk dienkripsi"></textarea>
+                            <textarea id="atbashInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
                         </div>
-                        <button id="atbashEncrypt" class="btn btn-primary w-100 mb-2">Enkripsi</button>
-                        <button id="atbashDecrypt" class="btn btn-secondary w-100 mb-2">Dekripsi</button>
+                        <button id="atbashEncrypt" class="btn btn-primary w-100 mb-2">Enkripsi  / Deskripsi</button>
+                        <!-- <button id="atbashDecrypt" class="btn btn-secondary w-100 mb-2">Dekripsi</button> -->
                         <div class="mb-3">
                             <label for="atbashOutput" class="form-label">Hasil</label>
                             <textarea id="atbashOutput" class="form-control" rows="3" readonly></textarea>
@@ -89,13 +91,13 @@
         </div>
         <div class="row">
             <!-- Rail Fence Cipher Card -->
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Rail Fence Cipher</h5>
                         <div class="mb-3">
                             <label for="railFenceInput" class="form-label">Teks Asli</label>
-                            <textarea id="railFenceInput" class="form-control" rows="3" placeholder="Masukkan teks untuk dienkripsi"></textarea>
+                            <textarea id="railFenceInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
                         </div>
                         <button id="railFenceEncrypt" class="btn btn-primary w-100 mb-2">Enkripsi</button>
                         <button id="railFenceDecrypt" class="btn btn-secondary w-100 mb-2">Dekripsi</button>
@@ -107,8 +109,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <!-- Vigenère Cipher Card -->
             <div class="col-md-6">
                 <div class="card">
@@ -116,7 +116,7 @@
                         <h5 class="card-title">Vigenère Cipher</h5>
                         <div class="mb-3">
                             <label for="vigenereInput" class="form-label">Teks Asli</label>
-                            <textarea id="vigenereInput" class="form-control" rows="3" placeholder="Masukkan teks untuk dienkripsi"></textarea>
+                            <textarea id="vigenereInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="vigenereKey" class="form-label">Kunci Enkripsi</label>
@@ -132,7 +132,8 @@
                     </div>
                 </div>
             </div>
-        
+        </div>
+        <div class="row">
             <!-- Affine Cipher Card -->
             <div class="col-md-6">
                 <div class="card">
@@ -140,7 +141,7 @@
                         <h5 class="card-title">Affine Cipher</h5>
                         <div class="mb-3">
                             <label for="affineInput" class="form-label">Teks Asli</label>
-                            <textarea id="affineInput" class="form-control" rows="3" placeholder="Masukkan teks untuk dienkripsi"></textarea>
+                            <textarea id="affineInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="affineA" class="form-label">Parameter a</label>
@@ -160,8 +161,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <!-- Playfair Cipher Card -->
             <div class="col-md-6">
                 <div class="card">
@@ -169,7 +168,7 @@
                         <h5 class="card-title">Playfair Cipher</h5>
                         <div class="mb-3">
                             <label for="playfairInput" class="form-label">Teks Asli</label>
-                            <textarea id="playfairInput" class="form-control" rows="3" placeholder="Masukkan teks untuk dienkripsi"></textarea>
+                            <textarea id="playfairInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="playfairKey" class="form-label">Kunci Enkripsi</label>
@@ -185,15 +184,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            
         
-            <!-- Hill Cipher Card -->
+            <!-- Hill Cipher Card
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Hill Cipher</h5>
                         <div class="mb-3">
                             <label for="hillInput" class="form-label">Teks Asli</label>
-                            <textarea id="hillInput" class="form-control" rows="3" placeholder="Masukkan teks untuk dienkripsi"></textarea>
+                            <textarea id="hillInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="hillKey" class="form-label">Kunci Enkripsi (Matrix)</label>
@@ -208,7 +210,7 @@
                         <button id="hillCopy" class="btn btn-copy w-100"><i class="fa-solid fa-copy"></i> Salin</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <!-- AES Cipher Card -->
@@ -218,7 +220,7 @@
                         <h5 class="card-title">AES Cipher</h5>
                         <div class="mb-3">
                             <label for="aesInput" class="form-label">Teks Asli</label>
-                            <textarea id="aesInput" class="form-control" rows="3" placeholder="Masukkan teks untuk dienkripsi"></textarea>
+                            <textarea id="aesInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="aesKey" class="form-label">Kunci Enkripsi (16, 24, atau 32 bytes)</label>
@@ -245,7 +247,7 @@
                         <h5 class="card-title">RSA Cipher</h5>
                         <div class="mb-3">
                             <label for="rsaInput" class="form-label">Teks Asli</label>
-                            <textarea id="rsaInput" class="form-control" rows="3" placeholder="Masukkan teks untuk dienkripsi"></textarea>
+                            <textarea id="rsaInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="rsaPublicKey" class="form-label">Kunci Publik (Base64)</label>
@@ -265,7 +267,11 @@
                     </div>
                 </div>
             </div>
-        </div>                                     
+        </div>
+        <h6 class="text-center text-muted">*Tools ini bersifat sementara, ini adalah alat promosi kalkulator enskripsi deksripsi siap pakai yang akan di komersilkan</h6>
+        <h3 class="text-center text-muted"><i class="fa-solid fa-phone"></i> Hubungi <a href="https://kayol.site/rafifsadid">Admin</a> Untuk Membeli tools Ini</h3> 
+        <br>
+        <p class="text-center">~Admin baik hati</p>                                    
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -613,116 +619,116 @@
 
 
         // Hill Cipher Function
-        function hillCipher(text, key, action) {
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            const mod = 26;
+        // function hillCipher(text, key, action) {
+        //     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        //     const mod = 26;
 
-            function matrixInverse(matrix) {
-                const n = matrix.length;
-                const det = determinant(matrix);
-                const detInv = modInverse(det, mod);
-                const adjoint = [];
+        //     function matrixInverse(matrix) {
+        //         const n = matrix.length;
+        //         const det = determinant(matrix);
+        //         const detInv = modInverse(det, mod);
+        //         const adjoint = [];
                 
-                function determinant(matrix) {
-                    if (matrix.length === 1) return matrix[0][0];
-                    if (matrix.length === 2) return (matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]) % mod;
+        //         function determinant(matrix) {
+        //             if (matrix.length === 1) return matrix[0][0];
+        //             if (matrix.length === 2) return (matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]) % mod;
                     
-                    let det = 0;
-                    for (let i = 0; i < matrix.length; i++) {
-                        const minor = matrix.map(row => row.slice());
-                        minor.splice(0, 1);
-                        for (let j = 0; j < minor.length; j++) minor[j].splice(i, 1);
-                        det += matrix[0][i] * ((i % 2 === 0 ? 1 : -1) * determinant(minor));
-                        det = (det + mod) % mod;
-                    }
-                    return det;
-                }
+        //             let det = 0;
+        //             for (let i = 0; i < matrix.length; i++) {
+        //                 const minor = matrix.map(row => row.slice());
+        //                 minor.splice(0, 1);
+        //                 for (let j = 0; j < minor.length; j++) minor[j].splice(i, 1);
+        //                 det += matrix[0][i] * ((i % 2 === 0 ? 1 : -1) * determinant(minor));
+        //                 det = (det + mod) % mod;
+        //             }
+        //             return det;
+        //         }
 
-                function modInverse(a, m) {
-                    let m0 = m, t, q;
-                    let x0 = 0, x1 = 1;
-                    if (m === 1) return 0;
-                    while (a > 1) {
-                        q = Math.floor(a / m);
-                        t = m;
-                        m = a % m;
-                        a = t;
-                        t = x0;
-                        x0 = x1 - q * x0;
-                        x1 = t;
-                    }
-                    if (x1 < 0) x1 += m0;
-                    return x1;
-                }
+        //         function modInverse(a, m) {
+        //             let m0 = m, t, q;
+        //             let x0 = 0, x1 = 1;
+        //             if (m === 1) return 0;
+        //             while (a > 1) {
+        //                 q = Math.floor(a / m);
+        //                 t = m;
+        //                 m = a % m;
+        //                 a = t;
+        //                 t = x0;
+        //                 x0 = x1 - q * x0;
+        //                 x1 = t;
+        //             }
+        //             if (x1 < 0) x1 += m0;
+        //             return x1;
+        //         }
 
-                for (let i = 0; i < n; i++) {
-                    adjoint[i] = [];
-                    for (let j = 0; j < n; j++) {
-                        const minor = matrix.map(row => row.slice());
-                        minor.splice(i, 1);
-                        for (let k = 0; k < n - 1; k++) minor[k].splice(j, 1);
-                        adjoint[j][i] = ((determinant(minor) * detInv) % mod + mod) % mod;
-                    }
-                }
-                return adjoint;
-            }
+        //         for (let i = 0; i < n; i++) {
+        //             adjoint[i] = [];
+        //             for (let j = 0; j < n; j++) {
+        //                 const minor = matrix.map(row => row.slice());
+        //                 minor.splice(i, 1);
+        //                 for (let k = 0; k < n - 1; k++) minor[k].splice(j, 1);
+        //                 adjoint[j][i] = ((determinant(minor) * detInv) % mod + mod) % mod;
+        //             }
+        //         }
+        //         return adjoint;
+        //     }
 
-            function processText(text, matrix) {
-                text = text.toUpperCase().replace(/[^A-Z]/g, '');
-                const n = matrix.length;
-                let result = '';
+        //     function processText(text, matrix) {
+        //         text = text.toUpperCase().replace(/[^A-Z]/g, '');
+        //         const n = matrix.length;
+        //         let result = '';
 
-                // Pad the text if necessary
-                while (text.length % n !== 0) {
-                    text += 'X';  // Padding character
-                }
+        //         // Pad the text if necessary
+        //         while (text.length % n !== 0) {
+        //             text += 'X';  // Padding character
+        //         }
 
-                for (let i = 0; i < text.length; i += n) {
-                    const textBlock = text.slice(i, i + n).split('').map(char => alphabet.indexOf(char));
-                    let resultBlock = [];
+        //         for (let i = 0; i < text.length; i += n) {
+        //             const textBlock = text.slice(i, i + n).split('').map(char => alphabet.indexOf(char));
+        //             let resultBlock = [];
 
-                    for (let row = 0; row < n; row++) {
-                        let sum = 0;
-                        for (let col = 0; col < n; col++) {
-                            sum += textBlock[col] * matrix[row][col];
-                        }
-                        resultBlock[row] = (sum % mod + mod) % mod;
-                    }
-                    result += resultBlock.map(index => alphabet[index]).join('');
-                }
+        //             for (let row = 0; row < n; row++) {
+        //                 let sum = 0;
+        //                 for (let col = 0; col < n; col++) {
+        //                     sum += textBlock[col] * matrix[row][col];
+        //                 }
+        //                 resultBlock[row] = (sum % mod + mod) % mod;
+        //             }
+        //             result += resultBlock.map(index => alphabet[index]).join('');
+        //         }
 
-                return result;
-            }
+        //         return result;
+        //     }
 
-            const keyMatrix = key.split(',').map(row => row.split(' ').map(Number));
-            if (action === 'encrypt') {
-                return processText(text, keyMatrix);
-            } else {
-                const inverseMatrix = matrixInverse(keyMatrix);
-                return processText(text, inverseMatrix);
-            }
-        }
+        //     const keyMatrix = key.split(',').map(row => row.split(' ').map(Number));
+        //     if (action === 'encrypt') {
+        //         return processText(text, keyMatrix);
+        //     } else {
+        //         const inverseMatrix = matrixInverse(keyMatrix);
+        //         return processText(text, inverseMatrix);
+        //     }
+        // }
 
-        // Event listeners for Hill Cipher
-        document.getElementById('hillEncrypt').addEventListener('click', () => {
-            const input = document.getElementById('hillInput').value;
-            const key = document.getElementById('hillKey').value;
-            const result = hillCipher(input, key, 'encrypt');
-            document.getElementById('hillOutput').value = result;
-        });
+        // // Event listeners for Hill Cipher
+        // document.getElementById('hillEncrypt').addEventListener('click', () => {
+        //     const input = document.getElementById('hillInput').value;
+        //     const key = document.getElementById('hillKey').value;
+        //     const result = hillCipher(input, key, 'encrypt');
+        //     document.getElementById('hillOutput').value = result;
+        // });
 
-        document.getElementById('hillDecrypt').addEventListener('click', () => {
-            const input = document.getElementById('hillInput').value;
-            const key = document.getElementById('hillKey').value;
-            const result = hillCipher(input, key, 'decrypt');
-            document.getElementById('hillOutput').value = result;
-        });
+        // document.getElementById('hillDecrypt').addEventListener('click', () => {
+        //     const input = document.getElementById('hillInput').value;
+        //     const key = document.getElementById('hillKey').value;
+        //     const result = hillCipher(input, key, 'decrypt');
+        //     document.getElementById('hillOutput').value = result;
+        // });
 
-        document.getElementById('hillCopy').addEventListener('click', () => {
-            const output = document.getElementById('hillOutput');
-            output.select();
-            document.execCommand('copy');
-        });
+        // document.getElementById('hillCopy').addEventListener('click', () => {
+        //     const output = document.getElementById('hillOutput');
+        //     output.select();
+        //     document.execCommand('copy');
+        // });
 
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
