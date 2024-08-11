@@ -268,10 +268,61 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Caesar Rail Base64</h5>
+                        <div class="mb-3">
+                            <label for="customInput" class="form-label">Teks Asli</label>
+                            <textarea id="customInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customKey" class="form-label">Kunci</label>
+                            <input type="number" id="customKey" class="form-control" value="3" min="1" max="25">
+                        </div>
+                        <button id="customEncrypt" class="btn btn-primary w-100 mb-2">Enkripsi</button>
+                        <button id="customDecrypt" class="btn btn-secondary w-100 mb-2">Dekripsi</button>
+                        <div class="mb-3">
+                            <label for="customOutput" class="form-label">Hasil</label>
+                            <textarea id="customOutput" class="form-control" rows="3" readonly></textarea>
+                        </div>
+                        <button id="customCopy" class="btn btn-copy w-100"><i class="fa-solid fa-copy"></i> Salin</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Caesar Vign Base64</h5>
+                        <div class="mb-3">
+                            <label for="caevigInput" class="form-label">Teks Asli</label>
+                            <textarea id="caevigInput" class="form-control" rows="3" placeholder="Masukkan teks"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="caevigShift" class="form-label">Shift Caesar (1-25)</label>
+                            <input type="number" id="caevigShift" class="form-control" min="1" max="25" placeholder="Masukkan shift Caesar">
+                        </div>
+                        <div class="mb-3">
+                            <label for="caevigKey" class="form-label">Kunci Vigenère</label>
+                            <input type="text" id="caevigKey" class="form-control" placeholder="Masukkan kunci Vigenère">
+                        </div>
+                        <button id="caevigEncrypt" class="btn btn-primary w-100 mb-2">Enkripsi</button>
+                        <button id="caevigDecrypt" class="btn btn-secondary w-100 mb-2">Dekripsi</button>
+                        <div class="mb-3">
+                            <label for="caevigOutput" class="form-label">Hasil</label>
+                            <textarea id="caevigOutput" class="form-control" rows="3" readonly></textarea>
+                        </div>
+                        <button id="caevigCopy" class="btn btn-copy w-100"><i class="fa-solid fa-copy"></i> Salin</button>
+                    </div>
+                </div>
+            </div>
+        </div>               
         <h6 class="text-center text-muted">*Tools ini bersifat sementara, ini adalah alat promosi kalkulator enskripsi deksripsi siap pakai yang akan di komersilkan</h6>
         <h3 class="text-center text-muted"><i class="fa-solid fa-phone"></i> Hubungi <a href="https://kayol.site/rafifsadid">Admin</a> Untuk Membeli tools Ini</h3> 
         <br>
-        <p class="text-center">~Admin baik hati</p>                                    
+        <h6 class="text-center text-muted">Jika ada bug maafkan kami,kalau bisa laporkan kepada kami</h6> 
+        <p class="text-center">~Admin baik hati</p>                                  
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -826,5 +877,203 @@
             document.execCommand('copy');
         });
     </script>    
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function caesarEncrypt(text, shift) {
+            return text.split('').map(char => {
+                const code = char.charCodeAt(0);
+                if (char >= 'a' && char <= 'z') {
+                    return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+                } else if (char >= 'A' && char <= 'Z') {
+                    return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+                }
+                return char;
+            }).join('');
+        }
+    
+        function caesarDecrypt(text, shift) {
+            return caesarEncrypt(text, -shift);
+        }
+    
+        function railFenceEncrypt(text, numRails) {
+            const rails = Array.from({ length: numRails }, () => []);
+            let rail = 0, direction = 1;
+            for (let char of text) {
+                rails[rail].push(char);
+                rail += direction;
+                if (rail === 0 || rail === numRails - 1) direction *= -1;
+            }
+            return rails.flat().join('');
+        }
+    
+        function railFenceDecrypt(text, numRails) {
+            const len = text.length;
+            const rails = Array.from({ length: numRails }, () => []);
+            let rail = 0, direction = 1;
+            for (let i = 0; i < len; i++) {
+                rails[rail].push(null);
+                rail += direction;
+                if (rail === 0 || rail === numRails - 1) direction *= -1;
+            }
+            let index = 0;
+            for (let railArr of rails) {
+                for (let i = 0; i < railArr.length; i++) {
+                    railArr[i] = text[index++];
+                }
+            }
+            let result = '';
+            rail = 0; direction = 1;
+            for (let i = 0; i < len; i++) {
+                result += rails[rail].shift();
+                rail += direction;
+                if (rail === 0 || rail === numRails - 1) direction *= -1;
+            }
+            return result;
+        }
+    
+        function base64Encode(text) {
+            return btoa(text);
+        }
+    
+        function base64Decode(text) {
+            return atob(text);
+        }
+    
+        document.getElementById('customEncrypt').addEventListener('click', function() {
+            const inputText = document.getElementById('customInput').value;
+            let key = parseInt(document.getElementById('customKey').value) || 0;
+            key = Math.max(0, Math.min(key, 25)); // Limit key to between 0 and 25
+    
+            let encryptedText = caesarEncrypt(inputText, key);
+            encryptedText = railFenceEncrypt(encryptedText, 3); // Example with 3 rails
+            encryptedText = base64Encode(encryptedText);
+    
+            document.getElementById('customOutput').value = encryptedText;
+        });
+    
+        document.getElementById('customDecrypt').addEventListener('click', function() {
+            const inputText = document.getElementById('customInput').value;
+            let key = parseInt(document.getElementById('customKey').value) || 0;
+            key = Math.max(0, Math.min(key, 25)); // Limit key to between 0 and 25
+    
+            let decryptedText = base64Decode(inputText);
+            decryptedText = railFenceDecrypt(decryptedText, 3); // Example with 3 rails
+            decryptedText = caesarDecrypt(decryptedText, key);
+    
+            document.getElementById('customOutput').value = decryptedText;
+        });
+    
+        document.getElementById('customCopy').addEventListener('click', function() {
+            const output = document.getElementById('customOutput');
+            output.select();
+            document.execCommand('copy');
+        });
+    });
+    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Caesar Cipher encryption
+        function caevigEncrypt(text, shift) {
+            return text.split('').map(char => {
+                const code = char.charCodeAt(0);
+                if (char >= 'a' && char <= 'z') {
+                    return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+                } else if (char >= 'A' && char <= 'Z') {
+                    return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+                }
+                return char;
+            }).join('');
+        }
+
+        // Caesar Cipher decryption
+        function caevigDecrypt(text, shift) {
+            return caevigEncrypt(text, -shift);
+        }
+
+        // Vigenère Cipher encryption
+        function vigenereEncrypt(text, key) {
+            let result = '';
+            let keyIndex = 0;
+            for (let char of text) {
+                if (char >= 'a' && char <= 'z') {
+                    result += String.fromCharCode(((char.charCodeAt(0) - 97 + key.charCodeAt(keyIndex % key.length) - 97) % 26) + 97);
+                    keyIndex++;
+                } else if (char >= 'A' && char <= 'Z') {
+                    result += String.fromCharCode(((char.charCodeAt(0) - 65 + key.charCodeAt(keyIndex % key.length) - 65) % 26) + 65);
+                    keyIndex++;
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+
+        // Vigenère Cipher decryption
+        function vigenereDecrypt(text, key) {
+            let result = '';
+            let keyIndex = 0;
+            for (let char of text) {
+                if (char >= 'a' && char <= 'z') {
+                    result += String.fromCharCode(((char.charCodeAt(0) - 97 - (key.charCodeAt(keyIndex % key.length) - 97) + 26) % 26) + 97);
+                    keyIndex++;
+                } else if (char >= 'A' && char <= 'Z') {
+                    result += String.fromCharCode(((char.charCodeAt(0) - 65 - (key.charCodeAt(keyIndex % key.length) - 65) + 26) % 26) + 65);
+                    keyIndex++;
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+
+        // Base64 encoding
+        function base64Encode(text) {
+            return btoa(text);
+        }
+
+        // Base64 decoding
+        function base64Decode(text) {
+            return atob(text);
+        }
+
+        document.getElementById('caevigEncrypt').addEventListener('click', function() {
+            const inputText = document.getElementById('caevigInput').value;
+            const caevigShift = parseInt(document.getElementById('caevigShift').value) || 0;
+            const caevigKey = document.getElementById('caevigKey').value;
+
+            if (caevigShift < 1 || caevigShift > 25) {
+                return; // Invalid Caesar shift
+            }
+
+            let encryptedText = caevigEncrypt(inputText, caevigShift);
+            encryptedText = vigenereEncrypt(encryptedText, caevigKey);
+            encryptedText = base64Encode(encryptedText);
+
+            document.getElementById('caevigOutput').value = encryptedText;
+        });
+
+        document.getElementById('caevigDecrypt').addEventListener('click', function() {
+            const inputText = document.getElementById('caevigInput').value;
+            const caevigShift = parseInt(document.getElementById('caevigShift').value) || 0;
+            const caevigKey = document.getElementById('caevigKey').value;
+
+            if (caevigShift < 1 || caevigShift > 25) {
+                return; // Invalid Caesar shift
+            }
+
+            let decryptedText = base64Decode(inputText);
+            decryptedText = vigenereDecrypt(decryptedText, caevigKey);
+            decryptedText = caevigDecrypt(decryptedText, caevigShift);
+
+            document.getElementById('caevigOutput').value = decryptedText;
+        });
+
+        document.getElementById('caevigCopy').addEventListener('click', function() {
+            const output = document.getElementById('caevigOutput');
+            output.select();
+            document.execCommand('copy');
+        });
+    });
+</script>
 </body>
 </html>
