@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Fasilitas Usaha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link ke file CSS terpisah jika diperlukan -->
+</head>
+<body>
+    <style>
+        #itemDetails {
+            display: none;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    
+        #allItems div {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+    
+        .item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    
+        .item-details {
+            flex-grow: 1;
+        }
+    
+        .edit-btn, .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    
+        .delete-btn {
+            right: 80px;
+        }
+    
+        .form-group input[type="file"] {
+            padding: 0;
+        }
+    </style>
+    
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Daftar Fasilitas Usaha</h2>
+
+        <!-- Form Pencarian Item -->
+        <div class="input-group mb-3">
+            <input type="text" id="itemCode" class="form-control text-uppercase" placeholder="Masukkan kode item" onkeyup="this.value = this.value.toUpperCase();" onkeypress="handleKeyPress(event)">
+            <div class="input-group-append">
+                <button class="btn btn-primary" onclick="searchItem()">Cari</button>
+            </div>
+        </div>
+
+        <!-- Detail Item -->
+        <div id="itemDetails" class="mt-4">
+            <!-- Detail item akan ditampilkan di sini -->
+        </div>
+
+        <!-- Form Tambah Item -->
+        <h4 class="mt-5">Tambah Item Baru:</h4>
+        <form id="addItemForm">
+            <div class="form-group">
+                <input type="text" id="newItemCode" class="form-control" placeholder="Kode Item" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="newItemName" class="form-control" placeholder="Nama Item" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="newItemHargaAwal" class="form-control" placeholder="Harga Awal" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="newItemHargaHarian" class="form-control" placeholder="Harga Harian" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="newItemCatatan" class="form-control" placeholder="Catatan" required>
+            </div>
+            <div class="form-group">
+                <input type="file" id="newItemImage" class="form-control" accept="image/*">
+            </div>
+            <button type="button" class="btn btn-success" onclick="addItem()">Tambah Item</button>
+        </form>
+
+        <!-- Export-Import Options -->
+        <div class="mt-5">
+            <button class="btn btn-info" onclick="showExportImportOptions()">Export / Import Data</button>
+        </div>
+
+        <!-- Daftar Semua Item -->
+        <h4 class="mt-5">Daftar Semua Item:</h4>
+        <div id="allItems" class="mt-3">
+            <!-- Semua item ditampilkan di sini -->
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Inisialisasi data item dengan beberapa contoh item
+let items = {
+    "75A001": {
+        "name": "Personal Computer AMD A4 4GB/248GB",
+        "hargaAwal": "1.000.000",
+        "hargaHarian": "2.340",
+        "catatan": "3 Tahun",
+        "image": "https://via.placeholder.com/100"
+    },
+    "75B002": {
+        "name": "Monitor Samsung 24 inch",
+        "hargaAwal": "700.000",
+        "hargaHarian": "1.200",
+        "catatan": "2 Tahun",
+        "image": "https://via.placeholder.com/100"
+    },
+    "75C003": {
+        "name": "Mouse Logitech",
+        "hargaAwal": "150.000",
+        "hargaHarian": "500",
+        "catatan": "1 Tahun",
+        "image": "https://via.placeholder.com/100"
+    },
+    "75D004": {
+        "name": "Internet Connection",
+        "hargaAwal": "300.000",
+        "hargaHarian": "10.000",
+        "catatan": "1 Tahun",
+        "image": "https://via.placeholder.com/100"
+    },
+    "75E005": {
+        "name": "Meja Kerja",
+        "hargaAwal": "400.000",
+        "hargaHarian": "1.000",
+        "catatan": "2 Tahun",
+        "image": "https://via.placeholder.com/100"
+    },
+    "75F006": {
+        "name": "Server Rack",
+        "hargaAwal": "2.000.000",
+        "hargaHarian": "5.000",
+        "catatan": "5 Tahun",
+        "image": "https://via.placeholder.com/100"
+    }
+};
+
+// Load data from localStorage
+function loadData() {
+    const savedItems = localStorage.getItem('items');
+    if (savedItems) {
+        items = JSON.parse(savedItems);
+    }
+    displayAllItems();
+}
+
+// Save data to localStorage
+function saveData() {
+    localStorage.setItem('items', JSON.stringify(items));
+}
+
+// Display all items
+function displayAllItems() {
+    const allItemsHTML = Object.keys(items).map(code => {
+        const item = items[code];
+        return `
+            <div id="${code}">
+                <img src="${item.image}" alt="${item.name}" class="item-image">
+                <div class="item-details col-md-9">
+                    <h5><i class="fas fa-desktop"></i> ${item.name} (Kode: ${code})</h5>
+                    <p><strong>Harga Awal:</strong> ${item.hargaAwal}</p>
+                    <p><strong>Harga Harian:</strong> ${item.hargaHarian}</p>
+                    <p><strong>Catatan:</strong> ${item.catatan}</p>
+                </div>
+                <button class="btn btn-warning edit-btn" onclick="editItem('${code}')">Edit</button>
+                <button class="btn btn-danger delete-btn" onclick="deleteItem('${code}')">Hapus</button>
+            </div>
+        `;
+    }).join('');
+    document.getElementById("allItems").innerHTML = allItemsHTML;
+}
+
+// Add a new item
+function addItem() {
+    const newCode = document.getElementById("newItemCode").value.trim();
+    const newItem = {
+        name: document.getElementById("newItemName").value.trim(),
+        hargaAwal: document.getElementById("newItemHargaAwal").value.trim(),
+        hargaHarian: document.getElementById("newItemHargaHarian").value.trim(),
+        catatan: document.getElementById("newItemCatatan").value.trim(),
+        image: URL.createObjectURL(document.getElementById("newItemImage").files[0]) || "https://via.placeholder.com/100"
+    };
+
+    if (newCode && newItem.name && newItem.hargaAwal && newItem.hargaHarian && newItem.catatan) {
+        items[newCode] = newItem;
+        saveData();
+        displayAllItems();
+        swal("Sukses", "Item berhasil ditambahkan!", "success");
+        document.getElementById("addItemForm").reset();
+    } else {
+        swal("Gagal", "Semua kolom harus diisi!", "error");
+    }
+}
+
+// Edit an existing item
+function editItem(code) {
+    const item = items[code];
+    document.getElementById("newItemCode").value = code;
+    document.getElementById("newItemName").value = item.name;
+    document.getElementById("newItemHargaAwal").value = item.hargaAwal;
+    document.getElementById("newItemHargaHarian").value = item.hargaHarian;
+    document.getElementById("newItemCatatan").value = item.catatan;
+    // Placeholder image logic for editing
+    document.getElementById("newItemImage").value = ""; // Clear file input
+
+    // Remove item from list to be replaced
+    delete items[code];
+    saveData();
+    displayAllItems();
+}
+
+// Delete an item
+function deleteItem(code) {
+    delete items[code];
+    saveData();
+    displayAllItems();
+    swal("Item berhasil dihapus", "", "success");
+}
+
+// Search for an item
+function searchItem() {
+    const code = document.getElementById("itemCode").value.trim();
+
+    if (items[code]) {
+        const item = items[code];
+        document.getElementById("itemDetails").style.display = "block";
+        document.getElementById("itemDetails").innerHTML = `
+            <h4><i class="fas fa-desktop"></i> ${item.name} (Kode: ${code})</h4>
+            <img src="${item.image}" alt="${item.name}" class="item-image">
+            <p><strong>Harga Awal:</strong> ${item.hargaAwal}</p>
+            <p><strong>Harga Harian:</strong> ${item.hargaHarian}</p>
+            <p><strong>Catatan:</strong> ${item.catatan}</p>
+        `;
+    } else {
+        swal("Item tidak ditemukan", "Silakan cek kembali kode yang dimasukkan", "error");
+    }
+}
+
+// Handle enter key press
+function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+        searchItem();
+    }
+}
+
+// Show export/import options
+function showExportImportOptions() {
+    swal({
+        title: "Export / Import Data",
+        text: "Pilih opsi:",
+        buttons: {
+            cancel: "Batal",
+            export: {
+                text: "Export Data",
+                value: "export"
+            },
+            import: {
+                text: "Import Data",
+                value: "import"
+            }
+        }
+    }).then((value) => {
+        if (value === "export") {
+            exportData();
+        } else if (value === "import") {
+            importData();
+        }
+    });
+}
+
+// Export data to CSV
+function exportData() {
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Kode, Nama, Harga Awal, Harga Harian, Catatan\n";
+
+    for (const code in items) {
+        const item = items[code];
+        csvContent += `${code}, ${item.name}, ${item.hargaAwal}, ${item.hargaHarian}, ${item.catatan}\n`;
+    }
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "items.csv");
+    document.body.appendChild(link);
+    link.click();
+}
+
+// Import data from CSV or TXT
+function importData() {
+    swal({
+        title: "Import Data",
+        text: "Upload file CSV atau TXT:",
+        content: "input",
+        button: "Import",
+        closeOnClickOutside: false
+    }).then((input) => {
+        if (input) {
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const text = event.target.result;
+                parseData(text);
+            };
+
+            reader.readAsText(file);
+        }
+    });
+}
+
+// Parse imported data
+function parseData(data) {
+    const lines = data.split('\n');
+    for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].split(',');
+        if (line.length === 5) {
+            const [code, name, hargaAwal, hargaHarian, catatan] = line;
+            items[code.trim()] = {
+                name: name.trim(),
+                hargaAwal: hargaAwal.trim(),
+                hargaHarian: hargaHarian.trim(),
+                catatan: catatan.trim(),
+                image: "https://via.placeholder.com/100" // Default image
+            };
+        }
+    }
+    saveData();
+    displayAllItems();
+}
+
+// Load data when the page is loaded
+window.addEventListener('load', (event) => {
+    loadData();
+    document.getElementById("searchButton").addEventListener('click', searchItem);
+    document.getElementById("itemCode").addEventListener('keypress', handleKeyPress);
+    document.getElementById("showOptionsButton").addEventListener('click', showExportImportOptions);
+    document.getElementById("addItemButton").addEventListener('click', addItem);
+});
+
+    </script>
+</body>
+</html>
